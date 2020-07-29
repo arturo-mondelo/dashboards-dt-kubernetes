@@ -1111,254 +1111,210 @@
                 "width": 684,
                 "height": 38
             },
-            "tileFilter": {
-                "timeframe": null,
-                "managementZone": null
-            },
-            "markdown": " [Requests by App](#topglobalwebrequests;gtf=l_2_HOURS;gf=all;servicefilter=0%1E48%11%5BKubernetes%5Dapp) -  [Requests by Namespace](#topglobalwebrequests;gtf=l_2_HOURS;gf=all;servicefilter=0%1E48%11%5BKubernetes%5Dnamespace\u000B)  - [\uD83D\uDC22 TX > 10 Sec](#topglobalwebrequests;servicefilter=0%1E0%1110000000%144611686018427387) - [\uD83D\uDC0C >30 Sec](#topglobalwebrequests;servicefilter=0%1E0%1130000000%144611686018427387) - [Top SQL Statements](#topdbstatements;gtf=l_2_HOURS;gf=all) "
+             "tileFilter": {},
+        "markdown": " [Requests by App](#topglobalwebrequests;gtf=l_2_HOURS;gf=all;servicefilter=0%1E48%11%5BKubernetes%5Dapp) -  [Requests by Namespace](#topglobalwebrequests;gtf=l_2_HOURS;gf=all;servicefilter=0%1E48%11%5BKubernetes%5Dnamespace\u000B)  - [\uD83D\uDC22 TX > 10 Sec](#topglobalwebrequests;servicefilter=0%1E0%1110000000%144611686018427387%1048%11%5BKubernetes%5Dnamespace) - [\uD83D\uDC0C >30 Sec](#topglobalwebrequests;servicefilter=0%1E0%1130000000%144611686018427387%1048%11%5BKubernetes%5Dnamespace) - [Top SQL Statements](#topdbstatements;gtf=l_2_HOURS;gf=all) "
+    }, {
+        "name": "Markdown",
+        "tileType": "MARKDOWN",
+        "configured": true,
+        "bounds": {
+            "top": 380,
+            "left": 0,
+            "width": 228,
+            "height": 342
         },
-        {
-            "name": "Markdown",
-            "tileType": "MARKDOWN",
-            "configured": true,
-            "bounds": {
-                "top": 380,
-                "left": 0,
-                "width": 228,
-                "height": 342
-            },
-            "tileFilter": {
-                "timeframe": null,
-                "managementZone": null
-            },
-            "markdown": "[\uD83D\uDD2C Diagnostic Tools](#diagnostictools;)\n\n- [\uD83D\uDD78Smartscape](#smartscape;)\n- [Top WebRequests](#topglobalwebrequests;)\n- [Exceptions](#exceptionsoverview;)\n- [Process Crashes](#processcrashesglobal;)\n- [CPU Analysis](#codelevel;)\n- [Memory Dumps](#memorydumpsglobal;)\n- [Log Analytics](#loganalytics;)\n- [Technologies](#newprocessessummary;)\n- [Database Statements](#topdbstatements;)"
+        "tileFilter": {},
+        "markdown": "[\uD83D\uDD2C Diagnostic Tools](#diagnostictools;)\n\n- [\uD83D\uDD78Smartscape](#smartscape;)\n- [Top WebRequests](#topglobalwebrequests;)\n- [Exceptions](#exceptionsoverview;)\n- [Process Crashes](#processcrashesglobal;)\n- [CPU Analysis](#codelevel;)\n- [Memory Dumps](#memorydumpsglobal;)\n- [Log Analytics](#loganalytics;)\n- [Technologies](#newprocessessummary;)\n- [Database Statements](#topdbstatements;)"
+    }, {
+        "name": "Custom chart",
+        "tileType": "CUSTOM_CHARTING",
+        "configured": true,
+        "bounds": {
+            "top": 418,
+            "left": 228,
+            "width": 684,
+            "height": 304
         },
-        {
-            "name": "Custom chart",
-            "tileType": "CUSTOM_CHARTING",
-            "configured": true,
-            "bounds": {
-                "top": 418,
-                "left": 228,
-                "width": 684,
-                "height": 304
+        "tileFilter": {},
+        "filterConfig": {
+            "type": "MIXED",
+            "customName": "Request count vs 95th percentile",
+            "defaultName": "Custom chart",
+            "chartConfig": {
+                "legendShown": true,
+                "type": "TIMESERIES",
+                "series": [{
+                    "metric": "builtin:service.response.time",
+                    "aggregation": "PERCENTILE",
+                    "percentile": 95,
+                    "type": "LINE",
+                    "entityType": "SERVICE",
+                    "dimensions": [{
+                        "id": "0",
+                        "name": "dt.entity.service",
+                        "values": [],
+                        "entityDimension": true
+                    }],
+                    "sortAscending": false,
+                    "sortColumn": false,
+                    "aggregationRate": "TOTAL"
+                }, {
+                    "metric": "builtin:service.response.time",
+                    "aggregation": "COUNT",
+                    "type": "BAR",
+                    "entityType": "SERVICE",
+                    "dimensions": [{
+                        "id": "0",
+                        "name": "dt.entity.service",
+                        "values": [],
+                        "entityDimension": true
+                    }],
+                    "sortAscending": false,
+                    "sortColumn": true,
+                    "aggregationRate": "TOTAL"
+                }],
+                "resultMetadata": {}
             },
-            "tileFilter": {
-                "timeframe": null,
-                "managementZone": null
-            },
-            "filterConfig": {
-                "type": "MIXED",
-                "customName": "Request count vs 95th percentile",
-                "defaultName": "Custom chart",
-                "chartConfig": {
-                    "legendShown": true,
-                    "type": "TIMESERIES",
-                    "series": [
-                        {
-                            "metric": "builtin:service.response.time",
-                            "aggregation": "PERCENTILE",
-                            "percentile": 95,
-                            "type": "LINE",
-                            "entityType": "SERVICE",
-                            "dimensions": [
-                                {
-                                    "id": "0",
-                                    "name": "dt.entity.service",
-                                    "values": [],
-                                    "entityDimension": true
-                                }
-                            ],
-                            "sortAscending": false,
-                            "sortColumn": false,
-                            "aggregationRate": "TOTAL"
-                        },
-                        {
-                            "metric": "builtin:service.response.time",
-                            "aggregation": "COUNT",
-                            "percentile": null,
-                            "type": "BAR",
-                            "entityType": "SERVICE",
-                            "dimensions": [
-                                {
-                                    "id": "0",
-                                    "name": "dt.entity.service",
-                                    "values": [],
-                                    "entityDimension": true
-                                }
-                            ],
-                            "sortAscending": false,
-                            "sortColumn": true,
-                            "aggregationRate": "TOTAL"
-                        }
-                    ],
-                    "resultMetadata": {}
-                },
-                "filtersPerEntityType": {
-                    "SERVICE": {
-                        "AUTO_TAGS": [
-                            "[Kubernetes]namespace"
-                        ]
-                    }
+            "filtersPerEntityType": {
+                "SERVICE": {
+                    "AUTO_TAGS": ["[Kubernetes]namespace"]
                 }
-            }
-        },
-        {
-            "name": "Custom chart",
-            "tileType": "CUSTOM_CHARTING",
-            "configured": true,
-            "bounds": {
-                "top": 418,
-                "left": 950,
-                "width": 684,
-                "height": 304
-            },
-            "tileFilter": {
-                "timeframe": null,
-                "managementZone": null
-            },
-            "filterConfig": {
-                "type": "MIXED",
-                "customName": "HTTP [4|5xx] and failed transactions",
-                "defaultName": "Custom chart",
-                "chartConfig": {
-                    "legendShown": true,
-                    "type": "TIMESERIES",
-                    "series": [
-                        {
-                            "metric": "builtin:service.errors.fourxx.count",
-                            "aggregation": "NONE",
-                            "percentile": null,
-                            "type": "BAR",
-                            "entityType": "SERVICE",
-                            "dimensions": [],
-                            "sortAscending": false,
-                            "sortColumn": false,
-                            "aggregationRate": "TOTAL"
-                        },
-                        {
-                            "metric": "builtin:service.errors.fivexx.count",
-                            "aggregation": "NONE",
-                            "percentile": null,
-                            "type": "BAR",
-                            "entityType": "SERVICE",
-                            "dimensions": [],
-                            "sortAscending": false,
-                            "sortColumn": true,
-                            "aggregationRate": "TOTAL"
-                        },
-                        {
-                            "metric": "builtin:service.errors.total.count",
-                            "aggregation": "NONE",
-                            "percentile": null,
-                            "type": "LINE",
-                            "entityType": "SERVICE",
-                            "dimensions": [
-                                {
-                                    "id": "0",
-                                    "name": "dt.entity.service",
-                                    "values": [],
-                                    "entityDimension": true
-                                }
-                            ],
-                            "sortAscending": false,
-                            "sortColumn": true,
-                            "aggregationRate": "TOTAL"
-                        }
-                    ],
-                    "resultMetadata": {}
-                },
-                "filtersPerEntityType": {
-                    "SERVICE": {
-                        "AUTO_TAGS": [
-                            "[Kubernetes]namespace"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "name": "Custom chart",
-            "tileType": "CUSTOM_CHARTING",
-            "configured": true,
-            "bounds": {
-                "top": 722,
-                "left": 1368,
-                "width": 266,
-                "height": 304
-            },
-            "tileFilter": {
-                "timeframe": null,
-                "managementZone": null
-            },
-            "filterConfig": {
-                "type": "MIXED",
-                "customName": "Database calls per Service",
-                "defaultName": "Custom chart",
-                "chartConfig": {
-                    "legendShown": true,
-                    "type": "TOP_LIST",
-                    "series": [
-                        {
-                            "metric": "builtin:service.dbChildCallCount",
-                            "aggregation": "NONE",
-                            "percentile": null,
-                            "type": "LINE",
-                            "entityType": "SERVICE",
-                            "dimensions": [
-                                {
-                                    "id": "0",
-                                    "name": "dt.entity.service",
-                                    "values": [],
-                                    "entityDimension": true
-                                }
-                            ],
-                            "sortAscending": false,
-                            "sortColumn": true,
-                            "aggregationRate": "TOTAL"
-                        }
-                    ],
-                    "resultMetadata": {}
-                },
-                "filtersPerEntityType": {
-                    "SERVICE": {
-                        "AUTO_TAGS": [
-                            "[Kubernetes]namespace"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "name": "Markdown",
-            "tileType": "MARKDOWN",
-            "configured": true,
-            "bounds": {
-                "top": 380,
-                "left": 950,
-                "width": 684,
-                "height": 38
-            },
-            "tileFilter": {
-                "timeframe": null,
-                "managementZone": null
-            },
-            "markdown": "[❗Failed requests](#topglobalwebrequests;servicefilter=0%1E3%110) \n - [❗HTTP 4XX](#topglobalwebrequests;servicefilter=0%1E2%11400-499) - [❗HTTP 5XX](#topglobalwebrequests;servicefilter=0%1E2%11500-599) - [⚡️failed exceptions](#exceptionsoverview;servicefilter=0%1E3%110)"
-        },
-        {
-            "name": "Network status",
-            "tileType": "NETWORK_MEDIUM",
-            "configured": true,
-            "bounds": {
-                "top": 874,
-                "left": 0,
-                "width": 304,
-                "height": 152
-            },
-            "tileFilter": {
-                "timeframe": null,
-                "managementZone": null
             }
         }
-    ]
+    }, {
+        "name": "Custom chart",
+        "tileType": "CUSTOM_CHARTING",
+        "configured": true,
+        "bounds": {
+            "top": 418,
+            "left": 950,
+            "width": 684,
+            "height": 304
+        },
+        "tileFilter": {},
+        "filterConfig": {
+            "type": "MIXED",
+            "customName": "HTTP [4|5xx] and failed transactions",
+            "defaultName": "Custom chart",
+            "chartConfig": {
+                "legendShown": true,
+                "type": "TIMESERIES",
+                "series": [{
+                    "metric": "builtin:service.errors.fourxx.count",
+                    "aggregation": "NONE",
+                    "type": "BAR",
+                    "entityType": "SERVICE",
+                    "dimensions": [],
+                    "sortAscending": false,
+                    "sortColumn": false,
+                    "aggregationRate": "TOTAL"
+                }, {
+                    "metric": "builtin:service.errors.fivexx.count",
+                    "aggregation": "NONE",
+                    "type": "BAR",
+                    "entityType": "SERVICE",
+                    "dimensions": [],
+                    "sortAscending": false,
+                    "sortColumn": false,
+                    "aggregationRate": "TOTAL"
+                }, {
+                    "metric": "builtin:service.errors.total.count",
+                    "aggregation": "NONE",
+                    "type": "LINE",
+                    "entityType": "SERVICE",
+                    "dimensions": [{
+                        "id": "0",
+                        "name": "dt.entity.service",
+                        "values": [],
+                        "entityDimension": true
+                    }],
+                    "sortAscending": false,
+                    "sortColumn": true,
+                    "aggregationRate": "TOTAL"
+                }],
+                "resultMetadata": {}
+            },
+            "filtersPerEntityType": {
+                "SERVICE": {
+                    "AUTO_TAGS": ["[Kubernetes]namespace"]
+                }
+            }
+        }
+    }, {
+        "name": "Custom chart",
+        "tileType": "CUSTOM_CHARTING",
+        "configured": true,
+        "bounds": {
+            "top": 722,
+            "left": 1368,
+            "width": 266,
+            "height": 304
+        },
+        "tileFilter": {},
+        "filterConfig": {
+            "type": "MIXED",
+            "customName": "Database calls per Service",
+            "defaultName": "Custom chart",
+            "chartConfig": {
+                "legendShown": true,
+                "type": "TOP_LIST",
+                "series": [{
+                    "metric": "builtin:service.dbChildCallCount",
+                    "aggregation": "NONE",
+                    "type": "LINE",
+                    "entityType": "SERVICE",
+                    "dimensions": [{
+                        "id": "0",
+                        "name": "dt.entity.service",
+                        "values": [],
+                        "entityDimension": true
+                    }],
+                    "sortAscending": false,
+                    "sortColumn": true,
+                    "aggregationRate": "TOTAL"
+                }],
+                "resultMetadata": {}
+            },
+            "filtersPerEntityType": {
+                "SERVICE": {
+                    "AUTO_TAGS": ["[Kubernetes]namespace"]
+                }
+            }
+        }
+    }, {
+        "name": "Markdown",
+        "tileType": "MARKDOWN",
+        "configured": true,
+        "bounds": {
+            "top": 380,
+            "left": 950,
+            "width": 684,
+            "height": 38
+        },
+        "tileFilter": {},
+        "markdown": "[❗Failed requests](#topglobalwebrequests;servicefilter=0%1E3%110%1048%11%5BKubernetes%5Dnamespace) \n - [❗HTTP 4XX](#topglobalwebrequests;servicefilter=0%1E2%11400-499%1048%11%5BKubernetes%5Dnamespace) - [❗HTTP 5XX](#topglobalwebrequests;servicefilter=0%1E2%11500-599%1048%11%5BKubernetes%5Dnamespace) - [⚡️failed exceptions](#exceptionsoverview;servicefilter=0%1E3%110%1048%11%5BKubernetes%5Dnamespace)"
+    }, {
+        "name": "Network status",
+        "tileType": "NETWORK_MEDIUM",
+        "configured": true,
+        "bounds": {
+            "top": 874,
+            "left": 0,
+            "width": 304,
+            "height": 152
+        },
+        "tileFilter": {}
+    }, {
+        "name": "Markdown",
+        "tileType": "MARKDOWN",
+        "configured": true,
+        "bounds": {
+            "top": 0,
+            "left": 1748,
+            "width": 38,
+            "height": 38
+        },
+        "tileFilter": {},
+        "markdown": "## [⇦](#dashboard;id=bbbbbbbb-0001-0000-0000-000000000000)\n![BackButton]()"
+    }]
 }
